@@ -100,7 +100,7 @@ def fourSum_v1(nums, target):
 
 def four_sum_test():
     a = [1, 0, -1, 0, -2, 2]
-    rr = fourSum(a, 0)
+    rr = fourSum_v1(a, 0)
     print(rr)
 
 if __name__ == '__main__':
