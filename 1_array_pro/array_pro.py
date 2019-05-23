@@ -25,7 +25,7 @@ def three_sum_closest(a, target):
             if right <= left:
                 break
             tmp = a[right] + a[left] + dis
-            if tmp < closest_tmp:
+            if abs(tmp) < abs(closest_tmp):
                 closest_tmp = tmp
                 sum = a[right] + a[left] + a[i]
             if tmp > 0:
