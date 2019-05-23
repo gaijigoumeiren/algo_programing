@@ -45,6 +45,9 @@ def three_sum_closest_test():
 def fourSum_v1(nums, target):
     """
     这是我第一版的fourSum，速度超慢，39%
+    一般人们都是化成twosum来做，前几层都是循环，直到twosum
+    我在leetcode的讨论区看到一个哥们的Nsum的解决方案，也是化成twosum,但是没有用hashmap，在4sum的情况下领先100，时间复杂度最坏情况下为o(n^3)
+
     :param nums:
     :param target:
     :return:
