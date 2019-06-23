@@ -106,6 +106,69 @@ def four_sum_test():
     rr = fourSum_v1(a, 0)
     print(rr)
 
+def rectCover(number):
+    # write code here
+    """
+
+    :param number:
+    :return:
+    """
+    result = [0, 1, 2]
+    if number == 0:
+        return 0
+    if number <= 2:
+        return result[number]
+    for i in range(3, number+1):
+        result.append(result[i - 1] + result[i - 2])
+    return result[-1]
+
+
+"""
+求一个数二进制中1的个数
+https://www.nowcoder.com/questionTerminal/8ee967e43c2c4ec193b040ea7fbb10b8
+rectCover(number) {
+    if ( number < 1 ) return 0
+    g = 1, f = 2;
+    while (number-=1 ) {
+        f = f + g;
+        g = f - g;
+    }
+    return g;
+}
+"""
+
+
+def reOrderArray(array):
+    """
+    输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。
+    https://www.nowcoder.com/practice/beb5aa231adc45b2a5dcc5b62c93f593?tpId=13&tqId=11166&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+    :param array:
+    :return:
+    """
+    # write code here
+    i = len(array) - 1
+    j = i
+    while j >= 0 and i >= 0:
+        if array[i] % 2 == 0:
+            i -= 1
+        else:
+            if j < i:
+                j = j - 1
+            else:
+                j = i - 1
+            while j >= 0 and array[j] % 2 != 0:
+                j -= 1
+            if j >= 0:
+                tmp = array[j]
+                array[j:i] = array[j + 1:i + 1]
+                array[i] = tmp
+                i -= 1
+    return array
+
+
+def orc_larger_than_half(arr):
+
+
 if __name__ == '__main__':
     # three_sum_closest_test()
-    four_sum_test()
+    rectCover(3)
