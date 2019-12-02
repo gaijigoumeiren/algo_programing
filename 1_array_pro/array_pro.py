@@ -166,7 +166,67 @@ def reOrderArray(array):
     return array
 
 
-def orc_larger_than_half(arr):
+# def orc_larger_than_half(arr):
+
+def subset(nums):
+    """
+    给定一个不重复的数组，返回它的所有子集
+    解法在位运算里面，这里就不重复了。
+    :param nums:
+    :return:
+    """
+    pass
+
+def subset_with_dup(nums):
+    """
+    给定一个有重复的数组，返回它所有的子集，子集不能有重复数组。leetcode 90
+    解法：解法是逐个添加，在之前的记过基础上，构造更长数组的子集，但如果出现了重复的元素的话，子集就会有重复，为了避免重复，首先要做一个排序，然后后一个在构造子集的时候，就需要是否与之前的一个元素一样不一样了，不一样的话，就一样处理，如果一样，那么它只能往上一轮构造的一部分结果上添加，这部分就是上部分新加入结果集的那部分。
+    :param nums:
+    :return:
+    """
+    result = [[]]
+    nums.sort()
+    tmp = []
+    for idx, n in enumerate(nums):
+        if idx > 0 and nums[idx] == nums[idx - 1]:
+            tmp_1 = []
+            for j in tmp:
+                t = j + [n]
+                result.append(t)
+                tmp_1.append(t)
+            tmp = tmp_1
+        else:
+            tmp = []
+            for j in range(len(result)):
+                t = result[j] + [n]
+                result.append(t)
+                tmp.append(t)
+    return result
+
+
+def remove_duplicates(nums):
+    """
+    从有序数组中删除重复元素，leetcode 26，返回array长度
+    :param nums:
+    :return:
+    """
+    if not nums or len(nums) == 0:
+        return 0
+    if len(nums) == 1:
+        return 1
+
+    i = 1
+    j = 1
+    mn = nums[0]
+    while j < len(nums):
+        if mn != nums[j]:
+            mn = nums[j]
+            nums[i] = mn
+            i += 1
+
+        j += 1
+    return i
+
 
 
 if __name__ == '__main__':
